@@ -84,10 +84,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3905912355320440386, guid: baa010e8a8bb84e71b3f23f10cae6195,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9a1236f9846b447f1bcff3778397c510, type: 2}
     - target: {fileID: 3905912355320440412, guid: baa010e8a8bb84e71b3f23f10cae6195,
         type: 3}
       propertyPath: m_Name
-      value: Barrel
+      value: Barrel Variant
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3905912355320440413, guid: baa010e8a8bb84e71b3f23f10cae6195, type: 3}

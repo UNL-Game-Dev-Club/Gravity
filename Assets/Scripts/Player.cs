@@ -46,16 +46,13 @@ public class Player : MonoBehaviour {
     		CheckForWalls();
     	}
     	else {
-    		// transform.eulerAngles = Vector3.MoveTowards(transform.eulerAngles, new Vector3(0, 0, gravityAngle), 5);
     		rb.velocity = new Vector2(0, 0);
     		transform.eulerAngles = new Vector3(0, 0, 0);
 
-    		// mainGrid.transform.eulerAngles += new Vector3(0, 0, gravityDirection * 5);
     		mainGrid.transform.RotateAround(transform.position, transform.forward, gravityDirection * 5);
 
     		if (mainGrid.transform.eulerAngles.z > gravityAngle - 5 && mainGrid.transform.eulerAngles.z < gravityAngle + 5) {
     			mainGrid.transform.eulerAngles = new Vector3(0, 0, gravityAngle);
-    			// transform.SetParent(mainGrid.transform);
     			transform.eulerAngles = new Vector3(0, 0, 0);
     		}
     	}
@@ -65,11 +62,11 @@ public class Player : MonoBehaviour {
 
         float movement = Input.GetAxis("Horizontal");
 
-        if (rb.velocity.x < 0 && movement != 0) {
+        if (movement < 0) {
 			Animate("Left");
 			sr.flipX = false;
         }
-        else if (rb.velocity.x > 0 && movement != 0) {
+        else if (movement > 0) {
 			Animate("Left");
 			sr.flipX = true;
         }
