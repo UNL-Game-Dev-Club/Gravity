@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private Collider2D mainCollider;
+	private Animator animator;
+	private SpriteRenderer sr;
 	
 	public bool grounded;
 
@@ -32,6 +34,9 @@ public class Player : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
+
         gravityAngle = 0;
     }
 
@@ -41,15 +46,13 @@ public class Player : MonoBehaviour {
     		CheckForWalls();
     	}
     	else {
-    		// transform.eulerAngles = Vector3.MoveTowards(transform.eulerAngles, new Vector3(0, 0, gravityAngle), 5);
     		rb.velocity = new Vector2(0, 0);
     		transform.eulerAngles = new Vector3(0, 0, 0);
 
-    		mainGrid.transform.eulerAngles += new Vector3(0, 0, gravityDirection * 5);
+    		mainGrid.transform.RotateAround(transform.position, transform.forward, gravityDirection * 5);
 
     		if (mainGrid.transform.eulerAngles.z > gravityAngle - 5 && mainGrid.transform.eulerAngles.z < gravityAngle + 5) {
     			mainGrid.transform.eulerAngles = new Vector3(0, 0, gravityAngle);
-    			// transform.SetParent(mainGrid.transform);
     			transform.eulerAngles = new Vector3(0, 0, 0);
     		}
     	}
@@ -58,6 +61,18 @@ public class Player : MonoBehaviour {
     	UpdateJumping();
 
         float movement = Input.GetAxis("Horizontal");
+
+        if (movement < 0) {
+			Animate("Left");
+			sr.flipX = false;
+        }
+        else if (movement > 0) {
+			Animate("Left");
+			sr.flipX = true;
+        }
+        else {
+			Animate("Idle");
+        }
 
         rb.velocity = new Vector2(movement * moveSpeed, rb.velocity.y);
 
@@ -193,6 +208,14 @@ public class Player : MonoBehaviour {
     	gravityAngle = FixAngle(gravityAngle + amount);
     	gravityDirection = direction;
     	// transform.SetParent(null);
+    }
+
+    void Animate (string animation) {
+    	animator.ResetTrigger("Idle");
+    	animator.ResetTrigger("Left");
+    	animator.ResetTrigger("Right");
+
+    	animator.SetTrigger(animation);
     }
 }
 
