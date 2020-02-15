@@ -45,7 +45,8 @@ public class Player : MonoBehaviour {
     		rb.velocity = new Vector2(0, 0);
     		transform.eulerAngles = new Vector3(0, 0, 0);
 
-    		mainGrid.transform.eulerAngles += new Vector3(0, 0, gravityDirection * 5);
+    		// mainGrid.transform.eulerAngles += new Vector3(0, 0, gravityDirection * 5);
+    		mainGrid.transform.RotateAround(transform.position, transform.forward, gravityDirection * 5);
 
     		if (mainGrid.transform.eulerAngles.z > gravityAngle - 5 && mainGrid.transform.eulerAngles.z < gravityAngle + 5) {
     			mainGrid.transform.eulerAngles = new Vector3(0, 0, gravityAngle);
