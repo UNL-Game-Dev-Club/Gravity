@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private Collider2D mainCollider;
+	private Animator animator;
+	private SpriteRenderer sr;
 	
 	public bool grounded;
 
@@ -32,6 +34,9 @@ public class Player : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
+
         gravityAngle = 0;
     }
 
@@ -59,6 +64,18 @@ public class Player : MonoBehaviour {
     	UpdateJumping();
 
         float movement = Input.GetAxis("Horizontal");
+
+        if (rb.velocity.x < 0 && movement != 0) {
+			Animate("Left");
+			sr.flipX = false;
+        }
+        else if (rb.velocity.x > 0 && movement != 0) {
+			Animate("Left");
+			sr.flipX = true;
+        }
+        else {
+			Animate("Idle");
+        }
 
         rb.velocity = new Vector2(movement * moveSpeed, rb.velocity.y);
 
@@ -194,6 +211,14 @@ public class Player : MonoBehaviour {
     	gravityAngle = FixAngle(gravityAngle + amount);
     	gravityDirection = direction;
     	// transform.SetParent(null);
+    }
+
+    void Animate (string animation) {
+    	animator.ResetTrigger("Idle");
+    	animator.ResetTrigger("Left");
+    	animator.ResetTrigger("Right");
+
+    	animator.SetTrigger(animation);
     }
 }
 
