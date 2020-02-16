@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour {
     	}
     	else {
     		Animate("Left");
-    		GetComponent<SpriteRenderer>().flipX = true;
+    		GetComponent<SpriteRenderer>().flipX = false;
     	}
     }
 
@@ -177,10 +177,10 @@ public class Enemy : MonoBehaviour {
     		return;
     	}
 
-    	animator.ResetTrigger("Left");
-    	animator.ResetTrigger("Right");
+    	// animator.ResetTrigger("Left");
+    	// animator.ResetTrigger("Right");
 
-    	animator.SetTrigger(animation);
+    	// animator.SetTrigger(animation);
     }
 }
 

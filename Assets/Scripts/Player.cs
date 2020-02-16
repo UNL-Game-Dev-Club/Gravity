@@ -37,6 +37,8 @@ public class Player : MonoBehaviour {
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
 
+        mainGrid = transform.parent.gameObject;
+
         gravityAngle = 0;
     }
 
