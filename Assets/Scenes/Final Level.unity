@@ -11893,12 +11893,12 @@ PrefabInstance:
     - target: {fileID: 2299117131780327394, guid: 88f7b637f686efa49b181bd99ab3e71c,
         type: 3}
       propertyPath: nextLevel
-      value: Main Scene
+      value: Title Screen
       objectReference: {fileID: 0}
     - target: {fileID: 2299117131780327394, guid: 88f7b637f686efa49b181bd99ab3e71c,
         type: 3}
       propertyPath: previousLevel
-      value: Title Screen
+      value: Level 08
       objectReference: {fileID: 0}
     - target: {fileID: 2299117131780327395, guid: 88f7b637f686efa49b181bd99ab3e71c,
         type: 3}

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelEnd : MonoBehaviour {
 
+	public bool exit;
+
 	public string nextLevel;
     public string previousLevel;
     private SpriteRenderer sr;
@@ -17,6 +19,11 @@ public class LevelEnd : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         sr.transform.Rotate(0, 0, -100 * Time.deltaTime);
+
+        if (exit) {
+        	return;
+        }
+
         if (Input.GetKey("2"))
             LoadScene(nextLevel);
         else if (Input.GetKey("1"))
