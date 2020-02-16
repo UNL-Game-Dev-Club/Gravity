@@ -110,5 +110,7 @@ public class TileParticles : MonoBehaviour
         {
             Destroy(particle);
         }
+
+        allTheParticles.Clear();
     }
 }

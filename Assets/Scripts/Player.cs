@@ -207,7 +207,24 @@ public class Player : MonoBehaviour {
     void ChangeGravity (float amount, float direction) {
     	gravityAngle = FixAngle(gravityAngle + amount);
     	gravityDirection = direction;
-    	// transform.SetParent(null);
+
+    	switch (gravityAngle) {
+    		case 0:
+    			mainGrid.GetComponentInChildren<TileParticles>().RegenParticles(TileParticles.TileSideType.Top);
+    		break;
+
+    		case 90:
+    			mainGrid.GetComponentInChildren<TileParticles>().RegenParticles(TileParticles.TileSideType.Left);
+    		break;
+
+    		case 180:
+    			mainGrid.GetComponentInChildren<TileParticles>().RegenParticles(TileParticles.TileSideType.Bottom);
+    		break;
+
+    		case 270:
+    			mainGrid.GetComponentInChildren<TileParticles>().RegenParticles(TileParticles.TileSideType.Right);
+    		break;
+    	}
     }
 
     void Animate (string animation) {
