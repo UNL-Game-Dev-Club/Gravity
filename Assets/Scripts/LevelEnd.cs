@@ -24,7 +24,10 @@ public class LevelEnd : MonoBehaviour {
     	}
 
     	
-    	
+    	if(nextLevel == "Quit")
+        {
+            Application.Quit();
+        }
     	SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
     }
 }
