@@ -77,29 +77,26 @@ public class Enemy : MonoBehaviour {
     	}
     }
 
+    // Check for side collisions and ledges
     void CheckCollisions () {
     	Vector2 position = new Vector2(transform.position.x, transform.position.y);
     	Vector2 upVector = new Vector2(transform.up.x, transform.up.y);
     	Vector2 rightVector = new Vector2(transform.right.x, transform.right.y);
     	int backDirection = moveRight ? -1 : 1;
 
-        // Checks for floor with ledges
         colliding = false;
-        // Collider2D[] floorHitsLeft = Physics2D.OverlapCircleAll(new Vector2(transform.position.x - enemyRadius - 0.2f, transform.position.y - 1.5f), 0.01f);
-        // Collider2D[] floorHitsRight = Physics2D.OverlapCircleAll(new Vector2(transform.position.x + enemyRadius + 0.2f, transform.position.y - 1.5f), 0.01f);
 
         Collider2D[] floorHitsLeft = Physics2D.OverlapCircleAll(position + (rightVector * -(enemyRadius + 0.2f)) + (upVector * -(enemyRadius + 0.2f)), 0.01f);
         Collider2D[] floorHitsCenter = Physics2D.OverlapCircleAll(position + (rightVector * backDirection * (enemyRadius - 0.2f)) + (upVector * -(enemyRadius + 0.2f)), 0.01f);
         Collider2D[] floorHitsRight = Physics2D.OverlapCircleAll(position + (rightVector * (enemyRadius + 0.2f)) + (upVector * -(enemyRadius + 0.2f)), 0.01f);
 
-        barrels[0].transform.position = position + (rightVector * -enemyRadius) + (upVector * -(enemyRadius + 0.2f));
-        barrels[1].transform.position = position + (rightVector * enemyRadius) + (upVector * -(enemyRadius + 0.2f));
-        barrels[2].transform.position = position + (rightVector * backDirection * (enemyRadius - 0.2f)) + (upVector * -(enemyRadius + 0.2f));
+        // barrels[0].transform.position = position + (rightVector * -enemyRadius) + (upVector * -(enemyRadius + 0.2f));
+        // barrels[1].transform.position = position + (rightVector * enemyRadius) + (upVector * -(enemyRadius + 0.2f));
+        // barrels[2].transform.position = position + (rightVector * backDirection * (enemyRadius - 0.2f)) + (upVector * -(enemyRadius + 0.2f));
 
         float horizontalCheckDistance = moveRight ? enemyRadius : -enemyRadius;
-        // Collider2D[] sideHits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x + horizontalCheckDistance, transform.position.y), 0.01f);
         Collider2D[] sideHits = Physics2D.OverlapCircleAll(position + (rightVector * horizontalCheckDistance), 0.01f);
-        barrels[3].transform.position = position + (rightVector * horizontalCheckDistance);
+        // barrels[3].transform.position = position + (rightVector * horizontalCheckDistance);
         
         if (floorHitsRight.Length == 0 && floorHitsLeft.Length == 0)
             grounded = false;
