@@ -30,6 +30,8 @@ public class Player : MonoBehaviour {
 	private float gravityAngle;
 	private float gravityDirection;
 
+	private string lastAnimation;
+
     // Start is called before the first frame update
     void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -254,6 +256,16 @@ public class Player : MonoBehaviour {
     	animator.ResetTrigger("Idle");
     	animator.ResetTrigger("Left");
     	animator.ResetTrigger("Right");
+    	animator.ResetTrigger("MidJump");
+    	animator.ResetTrigger("MidJump2");
+    	animator.ResetTrigger("RunJump");
+    	animator.ResetTrigger("RunJump2");
+
+    	if (lastAnimation == animation) {
+    		return;
+    	}
+
+    	lastAnimation = animation;
 
     	animator.SetTrigger(animation);
     }
