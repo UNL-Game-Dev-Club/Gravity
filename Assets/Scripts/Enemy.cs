@@ -12,6 +12,10 @@ public class Enemy : MonoBehaviour {
 
 	private Rigidbody2D rb;
     private CapsuleCollider2D enemyCollider;
+    private Animator animator;
+
+    private string currentAnimation = "Left";
+
     private Vector2 velocity;
 
     public EnemyType type;
@@ -27,6 +31,7 @@ public class Enemy : MonoBehaviour {
     void Start() {
     	rb = GetComponent<Rigidbody2D>();
         enemyCollider = GetComponent<CapsuleCollider2D>();
+        animator = GetComponent<Animator>();
 
         enemyRadius = enemyCollider.size.x / 2F;
     }
@@ -60,6 +65,15 @@ public class Enemy : MonoBehaviour {
     			rb.velocity = (rightVector * velocity.x) + (upVector * -5);
 
     		break;
+    	}
+
+    	if (moveRight) {
+    		Animate("left");
+    		GetComponent<SpriteRenderer>().flipX = true;
+    	}
+    	else {
+    		Animate("Left");
+    		GetComponent<SpriteRenderer>().flipX = true;
     	}
     }
 
@@ -159,6 +173,17 @@ public class Enemy : MonoBehaviour {
     	}
 
     	return angle;
+    }
+
+    void Animate (string animation) {
+    	if (currentAnimation == animation) {
+    		return;
+    	}
+
+    	animator.ResetTrigger("Left");
+    	animator.ResetTrigger("Right");
+
+    	animator.SetTrigger(animation);
     }
 }
 

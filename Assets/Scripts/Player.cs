@@ -54,6 +54,8 @@ public class Player : MonoBehaviour {
     		if (mainGrid.transform.eulerAngles.z > gravityAngle - 5 && mainGrid.transform.eulerAngles.z < gravityAngle + 5) {
     			mainGrid.transform.eulerAngles = new Vector3(0, 0, gravityAngle);
     			transform.eulerAngles = new Vector3(0, 0, 0);
+
+
     		}
     	}
 
@@ -67,7 +69,7 @@ public class Player : MonoBehaviour {
 			sr.flipX = false;
         }
         else if (movement > 0) {
-			Animate("Left");
+			Animate("Right");
 			sr.flipX = true;
         }
         else {
@@ -214,7 +216,7 @@ public class Player : MonoBehaviour {
     		break;
 
     		case 90:
-    			mainGrid.GetComponentInChildren<TileParticles>().RegenParticles(TileParticles.TileSideType.Left);
+    			mainGrid.GetComponentInChildren<TileParticles>().RegenParticles(TileParticles.TileSideType.Right);
     		break;
 
     		case 180:
@@ -222,7 +224,7 @@ public class Player : MonoBehaviour {
     		break;
 
     		case 270:
-    			mainGrid.GetComponentInChildren<TileParticles>().RegenParticles(TileParticles.TileSideType.Right);
+    			mainGrid.GetComponentInChildren<TileParticles>().RegenParticles(TileParticles.TileSideType.Left);
     		break;
     	}
     }
