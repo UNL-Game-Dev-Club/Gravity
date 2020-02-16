@@ -54,7 +54,25 @@ public class Player : MonoBehaviour {
     		if (mainGrid.transform.eulerAngles.z > gravityAngle - 5 && mainGrid.transform.eulerAngles.z < gravityAngle + 5) {
     			mainGrid.transform.eulerAngles = new Vector3(0, 0, gravityAngle);
     			transform.eulerAngles = new Vector3(0, 0, 0);
-    		}
+                switch (gravityAngle)
+                {
+                    case 0:
+                        mainGrid.GetComponentInChildren<TileParticles>().GenParticles(TileParticles.TileSideType.Top);
+                        break;
+
+                    case 90:
+                        mainGrid.GetComponentInChildren<TileParticles>().GenParticles(TileParticles.TileSideType.Right);
+                        break;
+
+                    case 180:
+                        mainGrid.GetComponentInChildren<TileParticles>().GenParticles(TileParticles.TileSideType.Bottom);
+                        break;
+
+                    case 270:
+                        mainGrid.GetComponentInChildren<TileParticles>().GenParticles(TileParticles.TileSideType.Left);
+                        break;
+                }
+            }
     	}
 
     	CheckForGround();
@@ -208,23 +226,7 @@ public class Player : MonoBehaviour {
     	gravityAngle = FixAngle(gravityAngle + amount);
     	gravityDirection = direction;
 
-    	switch (gravityAngle) {
-    		case 0:
-    			mainGrid.GetComponentInChildren<TileParticles>().RegenParticles(TileParticles.TileSideType.Top);
-    		break;
-
-    		case 90:
-    			mainGrid.GetComponentInChildren<TileParticles>().RegenParticles(TileParticles.TileSideType.Left);
-    		break;
-
-    		case 180:
-    			mainGrid.GetComponentInChildren<TileParticles>().RegenParticles(TileParticles.TileSideType.Bottom);
-    		break;
-
-    		case 270:
-    			mainGrid.GetComponentInChildren<TileParticles>().RegenParticles(TileParticles.TileSideType.Right);
-    		break;
-    	}
+        mainGrid.GetComponentInChildren<TileParticles>().RemoveParticles();
     }
 
     void Animate (string animation) {
