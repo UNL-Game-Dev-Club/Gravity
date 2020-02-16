@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelEnd : MonoBehaviour {
 
 	public string nextLevel;
+    public string previousLevel;
     private SpriteRenderer sr;
 
     // Start is called before the first frame update
@@ -16,6 +17,10 @@ public class LevelEnd : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         sr.transform.Rotate(0, 0, -100 * Time.deltaTime);
+        if (Input.GetKey("2"))
+            LoadScene(nextLevel);
+        else if (Input.GetKey("1"))
+            LoadScene(previousLevel);
     }
 
     void OnTriggerEnter2D (Collider2D other) {
@@ -27,11 +32,22 @@ public class LevelEnd : MonoBehaviour {
         {
             return;
         }
-    	
-    	if(nextLevel == "Quit")
+
+        LoadScene(nextLevel);
+    }
+
+    void LoadScene(string level)
+    {
+        if (nextLevel == "Quit")
         {
+
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
+#endif
+            return;
         }
-    	SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
+        SceneManager.LoadScene(level, LoadSceneMode.Single);
     }
 }
