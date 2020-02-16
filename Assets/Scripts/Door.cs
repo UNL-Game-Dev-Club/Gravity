@@ -42,11 +42,11 @@ public class Door : MonoBehaviour {
         }
 
         switch (type) {
-        	case DoorType.AllButtons:
+        	case DoorType.OneButton:
         		open = (activeCount > 0);
         	break;
 
-        	case DoorType.OneButton:
+        	case DoorType.AllButtons:
         		open = (activeCount >= buttons.Length);
         	break;
         }
