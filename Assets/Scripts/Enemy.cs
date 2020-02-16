@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour {
     	}
     	else {
     		Animate("Left");
-    		GetComponent<SpriteRenderer>().flipX = true;
+    		GetComponent<SpriteRenderer>().flipX = false;
     	}
     }
 

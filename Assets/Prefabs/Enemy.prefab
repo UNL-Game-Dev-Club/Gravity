@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5081063343515947414}
   - component: {fileID: 5081063343515947497}
   - component: {fileID: 5081063343515947413}
+  - component: {fileID: 8954216042984097074}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 49b0468f5d2cf4decb1ad5a3b0facd06, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 409fb6ba1ee31504ba526cc31884f126, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,8 +134,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d58fbea9cc7fb54a9e1d51db720b6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   grounded: 0
   moveSpeed: 3
   moveRight: 0
   enemyRadius: 0
   colliding: 0
+  barrels: []
+--- !u!95 &8954216042984097074
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5081063343515947496}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7cda30a1f225d403ca0dd41979da9be3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
