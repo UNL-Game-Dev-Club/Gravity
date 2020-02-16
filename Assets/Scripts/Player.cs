@@ -54,6 +54,7 @@ public class Player : MonoBehaviour {
     		if (mainGrid.transform.eulerAngles.z > gravityAngle - 5 && mainGrid.transform.eulerAngles.z < gravityAngle + 5) {
     			mainGrid.transform.eulerAngles = new Vector3(0, 0, gravityAngle);
     			transform.eulerAngles = new Vector3(0, 0, 0);
+
                 switch (gravityAngle)
                 {
                     case 0:
@@ -85,7 +86,7 @@ public class Player : MonoBehaviour {
 			sr.flipX = false;
         }
         else if (movement > 0) {
-			Animate("Left");
+			Animate("Right");
 			sr.flipX = true;
         }
         else {
