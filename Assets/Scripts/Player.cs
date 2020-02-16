@@ -279,6 +279,9 @@ public class Player : MonoBehaviour {
         	return;
         }
 
+        if(GetComponentInChildren<RandomPitchPlaySound>() != null)
+            GetComponentInChildren<RandomPitchPlaySound>().PlayDeathSound();
+
         animator.SetTrigger("Dead");
 
         dead = true;

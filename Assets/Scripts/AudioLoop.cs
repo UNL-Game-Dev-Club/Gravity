@@ -41,6 +41,7 @@ public class AudioLoop : MonoBehaviour
             GameObject child = new GameObject("MusicBox");
             child.transform.parent = gameObject.transform;
             audioSources[i] = child.AddComponent<AudioSource>();
+            audioSources[i].volume = .9f;
         }
 
         nextEventTime = AudioSettings.dspTime;
@@ -61,8 +62,6 @@ public class AudioLoop : MonoBehaviour
                 
             audioSources[flip].clip = clips[flip];
             audioSources[flip].PlayScheduled(nextEventTime);
-
-            Debug.Log("Scheduled source " + flip + " to start at time " + nextEventTime);
 
             nextEventTime += clips[flip].length;
 
