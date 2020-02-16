@@ -5064,6 +5064,7 @@ MonoBehaviour:
   grounded: 0
   canJump: 0
   jumping: 0
+  dead: 0
 --- !u!212 &668247219
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7228,6 +7229,51 @@ MonoBehaviour:
   side: 0
   particles: {fileID: 5903191582331754651, guid: 85d1498b747df5646a14fc635c7d2980,
     type: 3}
+--- !u!1 &1337570273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1337570276}
+  - component: {fileID: 1337570274}
+  m_Layer: 0
+  m_Name: Main Music
+  m_TagString: Music
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1337570274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337570273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f0f255d3addf34e9d865adcc9a9ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: {fileID: 8300000, guid: 2f11c2dbd1caefb42951abf626522cd0, type: 3}
+  loop: {fileID: 8300000, guid: aa87c5f9a8535cf42a1ba96067853ee4, type: 3}
+--- !u!4 &1337570276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337570273}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.0542455, y: 0.18016781, z: -32.851562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1711370373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2299117131780327396, guid: 88f7b637f686efa49b181bd99ab3e71c,
@@ -7354,6 +7400,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1007019303}
     m_Modifications:
+    - target: {fileID: 2299117131780327394, guid: 88f7b637f686efa49b181bd99ab3e71c,
+        type: 3}
+      propertyPath: nextLevel
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2299117131780327395, guid: 88f7b637f686efa49b181bd99ab3e71c,
         type: 3}
       propertyPath: m_Name

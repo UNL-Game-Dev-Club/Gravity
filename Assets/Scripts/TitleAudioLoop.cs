@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioLoop : MonoBehaviour
+public class TitleAudioLoop : MonoBehaviour
 {
 
     public AudioClip start;
@@ -16,12 +16,12 @@ public class AudioLoop : MonoBehaviour
     private bool running = false;
     private void Awake()
     {
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("TitleMusic"))
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Music"))
         {
             Destroy(obj);
         }
 
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Music");
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("TitleMusic");
 
         if (objs.Length > 1)
         {
@@ -35,6 +35,7 @@ public class AudioLoop : MonoBehaviour
     void Start()
     {
         //gameObject.transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
+        if (SceneManager.GetActiveScene().name != "Title Screen") Destroy(this.gameObject);
         clips = new AudioClip[] { start, loop };
         for (int i = 0; i < 2; i++)
         {
