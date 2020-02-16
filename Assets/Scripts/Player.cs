@@ -91,6 +91,7 @@ public class Player : MonoBehaviour {
         		animString = "RunJump";
         	}
         	else if (Input.GetAxis("Horizontal") > 0) {
+        		animString = "RunJump";
         		sr.flipX = true;
         	}
 
