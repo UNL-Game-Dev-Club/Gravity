@@ -275,8 +275,13 @@ public class Player : MonoBehaviour {
 
     public void KillPlayer()
     {
-        dead = true;
+        if (dead) {
+        	return;
+        }
+
         animator.SetTrigger("Dead");
+
+        dead = true;
     }
 }
 
