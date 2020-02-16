@@ -10,7 +10,7 @@ public class KillBox : MonoBehaviour
         string objTag = collision.tag;
         
         if (objTag == "Player")
-            collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            collision.gameObject.GetComponent<Player>().KillPlayer();
         else if (objTag == "Enemy")
             Destroy(collision.gameObject);
 

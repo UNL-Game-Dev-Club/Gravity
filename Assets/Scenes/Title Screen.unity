@@ -6126,7 +6126,7 @@ PrefabInstance:
     - target: {fileID: 2299117131780327395, guid: 88f7b637f686efa49b181bd99ab3e71c,
         type: 3}
       propertyPath: m_Name
-      value: Portal
+      value: ExitPortal
       objectReference: {fileID: 0}
     - target: {fileID: 2299117131780327396, guid: 88f7b637f686efa49b181bd99ab3e71c,
         type: 3}

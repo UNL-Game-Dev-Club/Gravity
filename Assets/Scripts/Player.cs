@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
 	// Jump stuff
 	public bool canJump;
 	public bool jumping;
+    public bool dead;
 	private int jumpPhase;
 	private float jumpedFrom;
 
@@ -79,6 +80,8 @@ public class Player : MonoBehaviour {
                 }
             }
     	}
+
+        if (dead) return;
 
     	CheckForGround();
     	UpdateJumping();
@@ -268,6 +271,12 @@ public class Player : MonoBehaviour {
     	lastAnimation = animation;
 
     	animator.SetTrigger(animation);
+    }
+
+    public void KillPlayer()
+    {
+        dead = true;
+        animator.SetTrigger("Dead");
     }
 }
 

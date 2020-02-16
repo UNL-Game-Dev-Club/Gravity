@@ -23,6 +23,10 @@ public class LevelEnd : MonoBehaviour {
     		return;
     	}
 
+        if (other.gameObject.GetComponent<Player>().dead)
+        {
+            return;
+        }
     	
     	if(nextLevel == "Quit")
         {
