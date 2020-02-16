@@ -54,7 +54,26 @@ public class Player : MonoBehaviour {
     		if (mainGrid.transform.eulerAngles.z > gravityAngle - 5 && mainGrid.transform.eulerAngles.z < gravityAngle + 5) {
     			mainGrid.transform.eulerAngles = new Vector3(0, 0, gravityAngle);
     			transform.eulerAngles = new Vector3(0, 0, 0);
-    		}
+
+                switch (gravityAngle)
+                {
+                    case 0:
+                        mainGrid.GetComponentInChildren<TileParticles>().GenParticles(TileParticles.TileSideType.Top);
+                        break;
+
+                    case 90:
+                        mainGrid.GetComponentInChildren<TileParticles>().GenParticles(TileParticles.TileSideType.Right);
+                        break;
+
+                    case 180:
+                        mainGrid.GetComponentInChildren<TileParticles>().GenParticles(TileParticles.TileSideType.Bottom);
+                        break;
+
+                    case 270:
+                        mainGrid.GetComponentInChildren<TileParticles>().GenParticles(TileParticles.TileSideType.Left);
+                        break;
+                }
+            }
     	}
 
     	CheckForGround();
@@ -67,7 +86,7 @@ public class Player : MonoBehaviour {
 			sr.flipX = false;
         }
         else if (movement > 0) {
-			Animate("Left");
+			Animate("Right");
 			sr.flipX = true;
         }
         else {
@@ -207,7 +226,8 @@ public class Player : MonoBehaviour {
     void ChangeGravity (float amount, float direction) {
     	gravityAngle = FixAngle(gravityAngle + amount);
     	gravityDirection = direction;
-    	// transform.SetParent(null);
+
+        mainGrid.GetComponentInChildren<TileParticles>().RemoveParticles();
     }
 
     void Animate (string animation) {

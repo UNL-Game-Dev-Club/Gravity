@@ -39,6 +39,12 @@ public class TileParticles : MonoBehaviour
         CreateParticles();
     }
 
+    public void GenParticles(TileSideType newSide)
+    {
+        side = newSide;
+        CreateParticles();
+    }
+
     public void RegenParticles()
     {
         RemoveParticles();
@@ -93,22 +99,23 @@ public class TileParticles : MonoBehaviour
                 continue;
             }
 
-            allTheParticles.Add(Instantiate(particles, new Vector3(position.x + offsetX, position.y + offsetY), new Quaternion()));
+            ParticleSystem instObj = Instantiate(particles, new Vector3(0, 0, 0), new Quaternion());
+            instObj.transform.SetParent(transform.parent);
+            instObj.transform.localPosition = new Vector2(position.x + offsetX, position.y + offsetY);
+            instObj.transform.eulerAngles = new Vector3Int(0, 0, 0);
 
-            
-            foreach(ParticleSystem particle in allTheParticles)
-            {
-                particle.transform.eulerAngles = new Vector3Int(0, 0, rotationAngle);
-            }
+            allTheParticles.Add(instObj);
             
         }
     }
 
-    void RemoveParticles()
+    public void RemoveParticles()
     {
         foreach(ParticleSystem particle in allTheParticles)
         {
-            Destroy(particle);
+            Destroy(particle.gameObject);
         }
+
+        allTheParticles.Clear();
     }
 }
