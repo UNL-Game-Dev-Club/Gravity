@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - KillBox
   - Enemy
+  - Music
+  - TitleMusic
   layers:
   - Default
   - TransparentFX
