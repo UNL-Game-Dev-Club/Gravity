@@ -16,6 +16,7 @@ public class TileParticles : MonoBehaviour
     // Particle System and tile side
     public TileSideType side;
     public ParticleSystem particles;
+    public TileBase backTile;
 
     // List of all the particles
     private Tilemap tilemap;
@@ -90,11 +91,14 @@ public class TileParticles : MonoBehaviour
 
         foreach (var position in tilemap.cellBounds.allPositionsWithin)
         {
-            if (!tilemap.HasTile(position))
+            TileBase currentTile = tilemap.GetTile(new Vector3Int(position.x, position.y, 0));
+            TileBase neighBorTile = tilemap.GetTile(new Vector3Int((int)(position.x + neighborOffsetX), (int)(position.y + neighborOffsetY), 0));
+
+            if (!tilemap.HasTile(position) || currentTile == backTile)
             {
                 continue;
             }
-            if (tilemap.HasTile(new Vector3Int((int)(position.x + neighborOffsetX), (int)(position.y + neighborOffsetY), 0)))
+            if (tilemap.HasTile(new Vector3Int((int)(position.x + neighborOffsetX), (int)(position.y + neighborOffsetY), 0)) && neighBorTile != backTile)
             {
                 continue;
             }
