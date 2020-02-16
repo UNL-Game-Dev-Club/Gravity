@@ -177,10 +177,10 @@ public class Enemy : MonoBehaviour {
     		return;
     	}
 
-    	animator.ResetTrigger("Left");
-    	animator.ResetTrigger("Right");
+    	// animator.ResetTrigger("Left");
+    	// animator.ResetTrigger("Right");
 
-    	animator.SetTrigger(animation);
+    	// animator.SetTrigger(animation);
     }
 }
 

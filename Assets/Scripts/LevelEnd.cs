@@ -22,6 +22,8 @@ public class LevelEnd : MonoBehaviour {
     		return;
     	}
 
-    	SceneManager.LoadScene(nextLevel);
+    	
+    	
+    	SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
     }
 }

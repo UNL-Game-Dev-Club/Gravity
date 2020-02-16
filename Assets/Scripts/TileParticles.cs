@@ -22,10 +22,10 @@ public class TileParticles : MonoBehaviour
     private List<ParticleSystem> allTheParticles = new List<ParticleSystem>();
 
     // Used to set the direction
-    private int rotationAngle; 
+    private int rotationAngle;
     private float offsetX, offsetY, neighborOffsetX, neighborOffsetY;
 
-    void Start()
+    void Awake()
     {
         tilemap = GetComponent<Tilemap>();
         side = TileSideType.Top;
