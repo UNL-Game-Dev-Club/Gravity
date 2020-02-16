@@ -83,7 +83,24 @@ public class Player : MonoBehaviour {
 
         float movement = Input.GetAxis("Horizontal");
 
-        if (movement < 0) {
+        if (jumping) {
+        	sr.flipX = false;
+        	string animString = "MidJump";
+
+        	if (Input.GetAxis("Horizontal") < 0) {
+        		animString = "RunJump";
+        	}
+        	else if (Input.GetAxis("Horizontal") > 0) {
+        		sr.flipX = true;
+        	}
+
+        	if (rb.velocity.y < 0) {
+        		animString += "2";
+        	}
+
+        	Animate(animString);
+        }
+        else if (movement < 0) {
 			Animate("Left");
 			sr.flipX = false;
         }
