@@ -23,11 +23,17 @@ public class LevelEnd : MonoBehaviour {
         if (exit) {
         	return;
         }
-
+#if UNITY_WEBGL
+        if (Input.GetKeyUp("2"))
+            LoadScene(nextLevel);
+        else if (Input.GetKeyUp("1"))
+            LoadScene(previousLevel);
+#else
         if (Input.GetKey("2"))
             LoadScene(nextLevel);
         else if (Input.GetKey("1"))
             LoadScene(previousLevel);
+#endif
     }
 
     void OnTriggerEnter2D (Collider2D other) {
