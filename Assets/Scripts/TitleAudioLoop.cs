@@ -58,7 +58,7 @@ public class TitleAudioLoop : MonoBehaviour
 
         double time = AudioSettings.dspTime;
 
-        if (time + 1.0f > nextEventTime)
+        if (time + 1.0f > nextEventTime && flip < 2)
         {
                 
             audioSources[flip].clip = clips[flip];
@@ -66,7 +66,10 @@ public class TitleAudioLoop : MonoBehaviour
 
             nextEventTime += clips[flip].length;
 
-            if(flip == 0) flip = 1;
+            flip++;
+        }
+        if(flip == 1){
+            audioSources[flip].loop = true;
         }
     }
 }
