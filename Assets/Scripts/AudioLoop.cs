@@ -12,6 +12,7 @@ public class AudioLoop : MonoBehaviour
     private AudioClip[] clips;
     private double nextEventTime;
     private int flip = 0;
+    private bool looping;
     private AudioSource[] audioSources = new AudioSource[2];
     private bool running = false;
     private void Awake()
@@ -43,12 +44,16 @@ public class AudioLoop : MonoBehaviour
             audioSources[i] = child.AddComponent<AudioSource>();
             audioSources[i].volume = .9f;
         }
-
+#if UNITY_WEBGL
+        nextEventTime = AudioSettings.dspTime + 1.0f;
+#else
         nextEventTime = AudioSettings.dspTime;
+#endif
         running = true;
+        looping = false;
     }
 
-    void Update()
+void Update()
     {
         if (!running)
         {
@@ -57,18 +62,18 @@ public class AudioLoop : MonoBehaviour
 
         double time = AudioSettings.dspTime;
 
-        if (time + 1.0f > nextEventTime && flip < 2)
+        if (time + 1.0f > nextEventTime)
         {
-                
             audioSources[flip].clip = clips[flip];
             audioSources[flip].PlayScheduled(nextEventTime);
 
             nextEventTime += clips[flip].length;
-
-            flip++;
-        }
-        if(flip == 1){
-            audioSources[flip].loop = true;
+            flip = 1 - flip;
+            if(!looping)
+            {
+                clips[0] = clips[1];
+                looping = true;
+            }
         }
     }
 }
