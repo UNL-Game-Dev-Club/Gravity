@@ -46,7 +46,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.1
   m_Points:
   - {x: 20, y: -20}
   - {x: -10, y: -20}
@@ -65,3 +65,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285e071904dfef54c9217101e0713329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontKillEnemy: 0
